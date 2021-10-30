@@ -21,30 +21,9 @@
 		st,fastboot-gpios = <&gpioa 13 GPIO_ACTIVE_LOW>;
 		st,stm32prog-gpios = <&gpioa 14 GPIO_ACTIVE_LOW>;
 	};
-
-#ifdef CONFIG_STM32MP15x_STM32IMAGE
-	config {
-		u-boot,mmc-env-partition = "ssbl";
-	};
-
-	/* only needed for boot with TF-A, witout FIP support */
-	firmware {
-		optee {
-			compatible = "linaro,optee-tz";
-			method = "smc";
-		};
-	};
-
-	reserved-memory {
-		optee@fe000000 {
-			reg = <0xfe000000 0x02000000>;
-			no-map;
-		};
-	};
-#endif
 };
 
-#ifndef CONFIG_TFABOOT
+#ifndef CONFIG_STM32MP1_TRUSTED
 &clk_hse {
 	st,digbypass;
 };
