@@ -34,6 +34,17 @@
 		reg = <0xC0000000 0x40000000>;
 	};
 
+	usb_phy_tuning: usb-phy-tuning {
+		st,hs-dc-level = <2>;
+		st,fs-rftime-tuning;
+		st,hs-rftime-reduction;
+		st,hs-current-trim = <15>;
+		st,hs-impedance-trim = <1>;
+		st,squelch-level = <3>;
+		st,hs-rx-offset = <2>;
+		st,no-lsfs-sc;
+	};
+
 	reserved-memory {
 		#address-cells = <1>;
 		#size-cells = <1>;
@@ -364,15 +375,28 @@
 	status = "okay";
 };
 
+&usbh_ehci {
+	phys = <&usbphyc_port0>;
+	status = "okay";
+};
+
 &usbotg_hs {
-	vbus-supply = <&vbus_otg>;
+	phys = <&usbphyc_port1 1>;
+	phy-names = "usb2-phy";
+	usb-role-switch;
+	status = "okay";
+};
+
+&usbphyc {
+	status = "okay";
 };
 
 &usbphyc_port0 {
 	phy-supply = <&vdd_usb>;
+	st,phy-tuning = <&usb_phy_tuning>;
 };
 
 &usbphyc_port1 {
 	phy-supply = <&vdd_usb>;
+	st,phy-tuning = <&usb_phy_tuning>;
 };
-
