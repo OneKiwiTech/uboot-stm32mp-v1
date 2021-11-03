@@ -154,12 +154,19 @@
 	u-boot,dm-spl;
 };
 
-&sdmmc2_pins_mx {
+&sdmmc2_b4_pins_c {
 	u-boot,dm-spl;
 	pins1 {
 		u-boot,dm-spl;
 	};
 	pins2 {
+		u-boot,dm-spl;
+	};
+};
+
+&sdmmc2_d47_pins_c {
+	u-boot,dm-spl;
+	pins {
 		u-boot,dm-spl;
 	};
 };

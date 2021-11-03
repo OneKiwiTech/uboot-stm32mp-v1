@@ -332,11 +332,10 @@
 
 /* eMMC */
 &sdmmc2 {
-	u-boot,dm-pre-reloc;
 	pinctrl-names = "default", "opendrain", "sleep";
-	pinctrl-0 = <&sdmmc2_pins_mx>;
-	pinctrl-1 = <&sdmmc2_opendrain_pins_mx>;
-	pinctrl-2 = <&sdmmc2_sleep_pins_mx>;
+	pinctrl-0 = <&sdmmc2_b4_pins_c &sdmmc2_d47_pins_c>;
+	pinctrl-1 = <&sdmmc2_b4_od_pins_c &sdmmc2_d47_pins_c>;
+	pinctrl-2 = <&sdmmc2_b4_sleep_pins_c &sdmmc2_d47_sleep_pins_c>;
 	non-removable;
 	no-sd;
 	no-sdio;
